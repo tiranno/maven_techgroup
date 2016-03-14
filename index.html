@@ -18,22 +18,24 @@
         <h1>maven --tutorial</h1>
         <h2>N. &quot;an expert or connoisseur&quot;</h2>
 
-        <section id="downloads">
+        <!-- <section id="downloads">
           <a href="https://github.com/tiranno/maven_techgroup/zipball/master" class="btn">Download as .zip</a>
           <a href="https://github.com/tiranno/maven_techgroup/tarball/master" class="btn">Download as .tar.gz</a>
           <a href="https://github.com/tiranno/maven_techgroup" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
-        </section>
+        </section> -->
       </div>
     </header>
 
     <div class="container">
-      <section id="main_content">
-        <h1>
-          <a id="maven_techgroup" class="anchor" href="#maven_techgroup" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>maven_techgroup
-        </h1>
+      <section id="table_contents">
 
+      </section>
+
+      <section id="main_content">
         <section class="">
           <h2>Overview and Intro</h2>
+
+          <hr/>
         </section>
 
         <section class="">
@@ -54,6 +56,88 @@
           <article class="">
             <h3>Run and test your app</h3>
           </article>
+        </section>
+        <hr/>
+        <section>
+          <h2>Tutorial: In the Terminal</h2>
+
+          <article>
+            <h3>Download and Install</h3>
+
+            <p>
+              NOTE: this section fo the tutorial was done on a Linux terminal.
+              Windows users can follow along with Command Line by replacing certain
+              characters with the proper Windows syntax (i.e. '/' with '\')
+            </p>
+
+            <p>
+              In order to use Maven you will need the following:
+            </p>
+            <ul>
+              <li>
+                <a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">
+                  Java (JDK version 1.7 or greater)
+                </a>
+              </li>
+              <li>
+                10MB of free disk space for installation - plus space for project builds
+              </li>
+            </ul>
+            <p>
+              <a href="https://maven.apache.org/download.cgi#Installation">Download Maven</a>
+              and install it using the
+              <a href="https://maven.apache.org/download.cgi#Installation">instuctions</a>
+              from the Maven project site.
+            </p>
+            <br/>
+          </article>
+
+          <article>
+            <h3>Create your app</h3>
+            <p>
+              Initializing a new Maven app from the terminal is very simple.
+              Go to the directory where you would like your application to exist.
+              <br/>
+              Use the command below to creat your project, replacing the
+              <code>groupId</code> with your company/group name and
+              <code>artifactId</code> with the name of your app.
+            </p>
+            <pre>
+              mvn -B archetype:generate \
+                -DarchetypeGroupId=org.apache.maven.archetypes \
+                -DgroupId=com.capstone.app \
+                -DartifactId=maven-tut
+            </pre>
+            <p>
+              After a short wait, your new Maven project now exists in a new
+              directory under the project's name. Let's take a quick look at the
+              directory structure.
+            </p>
+            <img src="./images/trm_dir-struct.png" alt="The terminal's directory structure" />
+            <p>
+              The two main top-level objects are the POM file (pom.xml) and the
+              source code folder (src) where your code lives.
+              The POM file is the ...
+              The source folder contains a folder called "main" and a folder called
+              "test". These folders will obviously hold your main app code and
+              your test code, respectively.
+            </p>
+
+
+          </article>
+
+          <article>
+            <h3>Compile your app</h3>
+          </article>
+
+          <article>
+            <h3>Run and test your app</h3>
+          </article>
+        </section>
+        <hr />
+        <section>
+          <h2>In Depth: the POM file</h2>
+          <p></p>
         </section>
 
       </section>

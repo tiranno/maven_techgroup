@@ -245,3 +245,13 @@ a {
 .cf {
   zoom:1;
 }
+
+
+/* Our personal styles */
+code {
+  color: #b5e853;
+  background: black;
+  border: 1px solid darkgrey;
+  padding: 3px;
+  border-radius: 3px;
+}
