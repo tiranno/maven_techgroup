@@ -42,19 +42,19 @@
           <h2>Tutorial: In Eclipse</h2>
 
           <article class="">
-            <h3>Download and Install</h3>
+            <h3>$ Download and Install</h3>
           </article>
 
           <article class="">
-            <h3>Create your app</h3>
+            <h3>$ Create your app</h3>
           </article>
 
           <article class="">
-            <h3>Compile your app</h3>
+            <h3>$ Compile your app</h3>
           </article>
 
           <article class="">
-            <h3>Run and test your app</h3>
+            <h3>$ Run and test your app</h3>
           </article>
         </section>
         <hr/>
@@ -62,14 +62,13 @@
           <h2>Tutorial: In the Terminal</h2>
 
           <article>
-            <h3>Download and Install</h3>
+            <h3>$ Download and Install</h3>
 
             <p>
               NOTE: this section fo the tutorial was done on a Linux terminal.
               Windows users can follow along with Command Line by replacing certain
               characters with the proper Windows syntax (i.e. '/' with '\')
             </p>
-
             <p>
               In order to use Maven you will need the following:
             </p>
@@ -84,16 +83,18 @@
               </li>
             </ul>
             <p>
-              <a href="https://maven.apache.org/download.cgi#Installation">Download Maven</a>
-              and install it using the
-              <a href="https://maven.apache.org/download.cgi#Installation">instuctions</a>
-              from the Maven project site.
+              On Ubuntu-based distros you can use the <code>apt-get</code> command
+              install Maven.
+              <pre>sudo apt-get install maven</pre>
+              If you wish to use Maven on another OS or to install from source
+              consult the <a href="https://maven.apache.org/download.cgi#Installation">
+              installation instuctions</a> from the Maven project site.
             </p>
             <br/>
           </article>
 
           <article>
-            <h3>Create your app</h3>
+            <h3>$ Create your app</h3>
             <p>
               Initializing a new Maven app from the terminal is very simple.
               Go to the directory where you would like your application to exist.
@@ -101,13 +102,12 @@
               Use the command below to creat your project, replacing the
               <code>groupId</code> with your company/group name and
               <code>artifactId</code> with the name of your app.
+              <pre>mvn -B archetype:generate \
+      -DarchetypeGroupId=org.apache.maven.archetypes \
+      -DgroupId=com.capstone.app \
+      -DartifactId=maven-tut
+              </pre>
             </p>
-            <pre>
-              mvn -B archetype:generate \
-                -DarchetypeGroupId=org.apache.maven.archetypes \
-                -DgroupId=com.capstone.app \
-                -DartifactId=maven-tut
-            </pre>
             <p>
               After a short wait, your new Maven project now exists in a new
               directory under the project's name. Let's take a quick look at the
@@ -116,26 +116,68 @@
             <img src="./images/trm_dir-struct.png" alt="The terminal's directory structure" />
             <p>
               The two main top-level objects are the POM file (pom.xml) and the
-              source code folder (src) where your code lives.
-              The POM file is the ...
-              The source folder contains a folder called "main" and a folder called
-              "test". These folders will obviously hold your main app code and
-              your test code, respectively.
+              src directory where your code lives.
+            </p>
+            <p>
+              The <b>POM</b> (Project Object Model) file contains all of the important
+              information about your project. Descibed here can be information on
+              what package type to compile to, current project version, project
+              dependencies, etc.
+            </p>
+            <aside>
+              For more on the POM see
+              <a href="#id-pom"><b>In Depth: POM file section</b></a>
+            </aside>
+            <p>
+              The <b>source</b> (src) folder contains two folders: "main" and "test".
+              These folders will [obviously] hold your main app code and your test
+              code, respectively.
             </p>
 
+            <h4>"Hello, World!"</h4>
+            <p>
+              [[[ADD A HELLO WORLD SECTION]]]
+            </p>
+          </article>
+
+          <article>
+            <h3>$ Compile your app</h3>
+            <p>
+              Once you satisfied with your app, go back to the terminal and navigate
+              to the directory containing the POM file. In our case, it is
+              <code>/maven-tut</code>. Then you can run...
+            </p>
+            <pre>mvn compile</pre>
+            <p>
+              This is why you decided to use Maven.
+              <br>
+              The compile process automatically downloads all of the dependencies
+              and plugins descibed in the POM file. It then compiles them into the
+              app and packages the app into your POM-decided packaging type.
+              <br>
+              The compiled classes are placed into a subdirectory:
+              <code>./target/classes</code>
+              [[[MORE]]]
+            </p>
 
           </article>
 
           <article>
-            <h3>Compile your app</h3>
-          </article>
-
-          <article>
-            <h3>Run and test your app</h3>
+            <h3>$ Run and test your app</h3>
+            <p>
+              Maven can also handle automatic unit testing (becuase we always write
+              and execute test code).
+              [[[WRITE EXAMPLE TEST]]]
+              Once you have written your tests go back to the terminal and run...
+              <pre>mvn test</pre>
+              and your app will compile and run the tests placed in the test folder.
+              Results from these tests will be displayed at the bottom of the terminal
+              output.
+            </p>
           </article>
         </section>
         <hr />
-        <section>
+        <section id="id-pom">
           <h2>In Depth: the POM file</h2>
           <p></p>
         </section>
