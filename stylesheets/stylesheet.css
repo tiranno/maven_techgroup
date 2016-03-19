@@ -251,9 +251,10 @@ a {
 code {
   color: #b5e853;
   background: black;
-  border: 1px solid darkgrey;
+  border: 1px solid rgba(255, 255, 255, 0.15);
   padding: 3px;
   border-radius: 3px;
+  white-space: nowrap;
 }
 
 aside {

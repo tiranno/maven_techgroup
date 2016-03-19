@@ -63,123 +63,222 @@
 
           <article>
             <h3>$ Download and Install</h3>
+              <p>
+                NOTE: this section fo the tutorial was done on a Linux terminal.
+                Windows users can follow along with Command Line by replacing certain
+                characters with the proper Windows syntax (i.e. '/' with '\')
+              </p>
+              <p>
+                In order to use Maven you will need the following:
+              </p>
+              <ul>
+                <li>
+                  <a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">
+                    Java (JDK version 1.7 or greater)
+                  </a>
+                </li>
+                <li>
+                  10MB of free disk space for installation - plus space for project builds
+                </li>
+              </ul>
+              <p>
+                On Ubuntu-based distros you can use the <code>apt-get</code> command
+                install Maven.
 
-            <p>
-              NOTE: this section fo the tutorial was done on a Linux terminal.
-              Windows users can follow along with Command Line by replacing certain
-              characters with the proper Windows syntax (i.e. '/' with '\')
-            </p>
-            <p>
-              In order to use Maven you will need the following:
-            </p>
-            <ul>
-              <li>
-                <a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">
-                  Java (JDK version 1.7 or greater)
-                </a>
-              </li>
-              <li>
-                10MB of free disk space for installation - plus space for project builds
-              </li>
-            </ul>
-            <p>
-              On Ubuntu-based distros you can use the <code>apt-get</code> command
-              install Maven.
-              <pre>sudo apt-get install maven</pre>
-              If you wish to use Maven on another OS or to install from source
-              consult the <a href="https://maven.apache.org/download.cgi#Installation">
-              installation instuctions</a> from the Maven project site.
-            </p>
-            <br/>
+                <pre> sudo apt-get install maven</pre>
+
+                If you wish to use Maven on another OS or to install from source
+                consult the <a href="https://maven.apache.org/download.cgi#Installation">
+                installation instuctions</a> from the Maven project site.
+              </p>
+              <br/>
           </article>
 
           <article>
-            <h3>$ Create your app</h3>
-            <p>
-              Initializing a new Maven app from the terminal is very simple.
-              Go to the directory where you would like your application to exist.
-              <br/>
-              Use the command below to creat your project, replacing the
-              <code>groupId</code> with your company/group name and
-              <code>artifactId</code> with the name of your app.
-              <pre>mvn -B archetype:generate \
+            <h3>$ Create Your App</h3>
+              <p>
+                Initializing a new Maven app from the terminal is very simple.
+                Go to the directory where you would like your application to exist.
+                <br/>
+                Use the command below to creat your project, replacing the
+                <code>groupId</code> with your company/group name and
+                <code>artifactId</code> with the name of your app.
+                <pre>mvn -B archetype:generate \
       -DarchetypeGroupId=org.apache.maven.archetypes \
       -DgroupId=com.capstone.app \
       -DartifactId=maven-tut
-              </pre>
-            </p>
-            <p>
-              After a short wait, your new Maven project now exists in a new
-              directory under the project's name. Let's take a quick look at the
-              directory structure.
-            </p>
-            <img src="./images/trm_dir-struct.png" alt="The terminal's directory structure" />
-            <p>
-              The two main top-level objects are the POM file (pom.xml) and the
-              src directory where your code lives.
-            </p>
-            <p>
-              The <b>POM</b> (Project Object Model) file contains all of the important
-              information about your project. Descibed here can be information on
-              what package type to compile to, current project version, project
-              dependencies, etc.
-            </p>
-            <aside>
-              For more on the POM see
-              <a href="#id-pom"><b>In Depth: POM file section</b></a>
-            </aside>
-            <p>
-              The <b>source</b> (src) folder contains two folders: "main" and "test".
-              These folders will [obviously] hold your main app code and your test
-              code, respectively.
-            </p>
+                </pre>
+              </p>
+              <p>
+                After a short wait, your new Maven project now exists in a new
+                directory under the project's name. Let's take a quick look at the
+                directory structure.
+              </p>
+              <img src="./images/trm_dir-struct.png" alt="The terminal's directory structure" />
+              <p>
+                The two main top-level objects are the POM file (pom.xml) and the
+                src directory where your code lives.
+              </p>
+              <p>
+                The <b>POM</b> (Project Object Model) file contains all of the important
+                information about your project. Descibed here can be information on
+                what package type to compile to, current project version, project
+                dependencies, etc. This is the biggest draw to Maven - the POM file
+                provides a single point of change for your applications metadata
+                and resources.
+              </p>
+              <aside>
+                For more on the POM see
+                <a href="#id-pom"><b>In Depth: POM file section</b></a>
+              </aside>
+              <p>
+                The <b>source</b> (src) folder contains two folders: "main" and "test".
+                These folders will [obviously] hold your main app code and your test
+                code, respectively.
+                <br>
+                <br>
+              </p>
 
-            <h4>"Hello, World!"</h4>
-            <p>
-              [[[ADD A HELLO WORLD SECTION]]]
-            </p>
+            <h4>Add Code</h4>
+              <p>
+                Navigate to <code>maven-tut/src/main/java/com/capstone/app</code>
+                here you will find a java file that contains a simple "hello world"
+                function.
+                <br>
+
+                Here is where we will add our code. For this example we will be
+                using a java library called Guava which contains many core functions
+                used by Google's Java-based apps.
+
+              </p>
+              <p>
+                Next to the main "Hello World" function I created a simple function
+                called "arrayToMultimap" that takes in an array of arrays that each start
+                with a string and are followed by a number of values (also strings).
+                It returns a Guava Mulitmap which maps multiple values to the same
+                key).
+                <br>
+                <br>
+                You can see the finished code below to adapt to your own project.
+                <br>
+                <br>
+                We are going to use this code to show how compiling and testing
+                works in Maven - and how easy it is.
+
+                <pre>
+  package com.capstone.app;
+
+  import java.util.Collection;
+  import com.google.common.collect.Multimap;
+
+  public class App {
+
+    public static Multimap<String,String> arrayToMultimap (String[][] arr){
+      Multimap<String,String> multimap = ArrayListMultimap.create();
+
+      for(i = 0; i < arr.length; i++ ){
+        for(j = 1; j < arr[i].length; j++ ){
+          multimap.put( arr[i][0], arr[i][j] );
+        }
+      }
+      return multimap;
+    }
+  }
+                </pre>
+                <br>
+              </p>
+
+            <h4>Add a Resource</h4>
+              <p>
+                Now we have code that uses an external Java library but we still
+                need to download it in order for our code to take advantage of it.
+                Maven makes it easy. Just add a few lines to the POM describing
+                the dependency: group-id, library-name, version number.
+
+                <pre> &lt;dependency&gt;
+   &lt;groupId&gt;     com.google.guava   &lt;/groupId&gt;
+   &lt;artifactId&gt;  guava   &lt;/artifactId&gt;
+   &lt;version&gt;     19.0   &lt;/version&gt;
+ &lt;/dependency&gt;</pre>
+
+                When we compile (in the next section), everything will be automatically
+                downloaded into our project.
+
+                <br><br>
+              </p>
+
+            <h4>Add a Test</h4>
+              <p>
+                [[[ADD A QUICK TEST TO RUN]]]
+              </p>
+              <p>
+                <br>
+              </p>
           </article>
 
           <article>
-            <h3>$ Compile your app</h3>
-            <p>
-              Once you satisfied with your app, go back to the terminal and navigate
-              to the directory containing the POM file. In our case, it is
-              <code>/maven-tut</code>. Then you can run...
-            </p>
-            <pre>mvn compile</pre>
-            <p>
-              This is why you decided to use Maven.
-              <br>
-              The compile process automatically downloads all of the dependencies
-              and plugins descibed in the POM file. It then compiles them into the
-              app and packages the app into your POM-decided packaging type.
-              <br>
-              The compiled classes are placed into a subdirectory:
-              <code>./target/classes</code>
-              [[[MORE]]]
-            </p>
+            <h3>$ Compile / Test Your App</h3>
+            <h4>Compiling</h4>
+              <p>
+                Once you satisfied with your app, go back to the terminal and navigate
+                to the directory containing the POM file. In our case, it is
+                <code>/maven-tut</code>. Then you can run...
 
+                <pre> mvn compile</pre>
+
+                This is why you decided to use Maven.
+                <br>
+                The compile process automatically downloads all of the dependencies
+                descibed in the POM file (in our case Guava).
+                Then it will compile the application classes
+                and place them in <code>maven-tut/target/classes</code>
+              </p>
+              <p>
+                [[[MORE]]]
+                <br><br>
+              </p>
+
+            <h4>Testing</h4>
+              <p>
+                Maven can also handle automatic unit testing (because we computer
+                scientists always write and execute test code).
+                Since we have already written a test for our code, go ahead and
+                run the following command in the terminal:
+
+                <pre> mvn test</pre>
+
+                Your app will compile and run the tests placed in the test folder.
+                Results from these tests will be displayed at the bottom of the terminal
+                output.
+                <br><br>
+              </p>
           </article>
 
           <article>
-            <h3>$ Run and test your app</h3>
+            <h3>$ Make a [JAR] Package</h3>
             <p>
-              Maven can also handle automatic unit testing (becuase we always write
-              and execute test code).
-              [[[WRITE EXAMPLE TEST]]]
-              Once you have written your tests go back to the terminal and run...
-              <pre>mvn test</pre>
-              and your app will compile and run the tests placed in the test folder.
-              Results from these tests will be displayed at the bottom of the terminal
-              output.
+              Now it's time to make your app distributable!
+              To do this, follow in the the fashion of the past commands.
+
+              <pre> mvn package</pre>
+
+              The JAR is placed in the <code>/target</code> directory.
+              Remember the resources we placed in the project source earlier?
+              Maven adds all of the resources in <code>$maven-tut/src/main/resources</code>
+              to the generated JAR. It's that easy!
+              <br>
+            </p>
+            <p>
+              You can go ahead and install from your JAR with <code>mvn install</code>
             </p>
           </article>
         </section>
         <hr />
         <section id="id-pom">
           <h2>In Depth: the POM file</h2>
-          <p></p>
+          <p>
+
+          </p>
         </section>
 
       </section>
