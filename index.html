@@ -42,7 +42,31 @@
           <h2>Tutorial: In Eclipse</h2>
 
           <article class="">
+			<h4>NOTE:</h4>
+			<p>This secion for the tutorial was done on the Eclipse IDE integration. To use Maven on other IDE, plase refer to <a href = "https://maven.apache.org/ide.html">Apache Maven IDE Integration</a> page for instructions.</p>
+			<p> If you are using Maven directly on the terminal, see: <a href="#id-terminal"><b>Tutorial: In the Terminal</b></a> section.
+
             <h3>$ Download and Install</h3>
+			<p>In order to use Maven on Eclipse, you will need the following:</p>
+			<ul>
+              <li>
+                <a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">
+                  Java (JDK version 1.7 or greater)
+                </a>
+              </li>
+              <li>
+				<a href="https://www.eclipse.org/downloads/">
+                Eclipse (Luna or newer)
+				</a>
+              </li>
+            </ul>
+
+			<p>Once you have sucessfullly set up Java enviroment and Eclipse IDE, you can go ahead right click on the Help menu, and click on <code>Eclipse Marketplace</code>.</p>
+			<img src="./images/help_eclipse_marketplace.png" alt="Maven download" width="650" height="300">
+			<p>Type Maven on the search menu. Search for <b>Maven Integration for Eclipse (Luna and newer)</b> plugin. Click on the <code>Install</code> button to install Maven Intergration.</p>
+			<img src="" alt="Maven plugin" width="650" height="250">
+			<p>Follow the instruction and restart Eclipse for new configuration.</p>
+
           </article>
 
           <article class="">
@@ -51,14 +75,57 @@
 
           <article class="">
             <h3>$ Compile your app</h3>
+            <p>Compilation is one of the numerous phases of the Maven default
+            lifecycle. This single lifecycle is composed of 23 different phases
+            including validation, compilation, testing, packaging, verification, installation,
+            and deployment. You can execute all of these phases at one time with Maven!
+            </p>
+            <p>
+            Before you execute the default lifecycle which will build your package, you should
+            verify your current packaging method in the POM file.
+            </p>
+            <img src="./images/pkg.png" alt="The package element" width = "350" height="60"/>
+            <p>
+              Viable values for packaging include jar, war, ear, and pom. The default
+              is jar.
+            </p>
+
           </article>
 
           <article class="">
             <h3>$ Run and test your app</h3>
+            <p>
+              Now that you are comfortable with the packaging method, the next step is to right
+              click on the project folder and click on <code>Run As</code>. From there, select <code>Maven build</code>.
+            </p>
+            <img src="./images/runAs.png" alt="Maven build" width="650" height="250"/>
+             <p>
+               You will be directed to an Edit Configuration window. In the goals field,
+               write <code>package</code> and then click on Run (You can specify additional goals
+               in your POM file).
+             </p>
+             <img src="./images/editConfig.png" alt="Edit Configuration window" width = "450" height="200"/>
+             <p>
+               Once the build completes, you will find your package file in the target folder of your
+               project directory.
+             </p>
+
+            <p>
+              There are multiple Maven commands within the <code>Run As</code> menu selection shown earlier.
+              For example, there is an option called <code>Maven clean</code> that will will remove all of the files created
+              during the previous build. This is a good action to take before rebuilding your project.
+            </p>
+            <p>
+              Additionally, there is an option called <code>Maven test</code>. Although the build option already includes testing,
+              this is a good action to take when you soley want to test without rebuilding your entire project.
+              [[ADD TEST HERE]]
+            </p>
+
+
           </article>
         </section>
         <hr/>
-        <section>
+        <section id="id-terminal">
           <h2>Tutorial: In the Terminal</h2>
 
           <article>
