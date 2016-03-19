@@ -248,6 +248,10 @@ a {
 
 
 /* Our personal styles */
+hr {
+  margin-bottom: 35px;
+}
+
 code {
   color: #b5e853;
   background: black;
