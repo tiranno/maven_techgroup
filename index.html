@@ -100,7 +100,7 @@
             </p>
             <p>
             Before you execute the default lifecycle which will build your package, you should
-            verify your current packaging method in the POM file.
+            verify that you are comfortable with your current packaging method in the POM file.
             </p>
     <pre>&lt;packaging&gt;jar&lt;/packaging&gt;</pre>
             <p>
@@ -113,7 +113,7 @@
           <article class="">
             <h3>$ Run and test your app</h3>
             <p>
-              Now that you are comfortable with the packaging method, the next step is to right
+              Now that the packaging method is taken care of, the next step is to right
               click on the project folder and click on <code>Run As</code>. From there, select <code>Maven build</code>.
             </p>
             <img src="./images/runAs.png" alt="Maven build" width="650" height="250"/>
@@ -130,12 +130,18 @@
 
             <p>
               There are multiple Maven commands within the <code>Run As</code> menu selection shown earlier.
+            </p>
+            <p>
               For example, there is an option called <code>Maven clean</code> that will will remove all of the files created
               during the previous build. This is a good action to take before rebuilding your project.
             </p>
             <p>
-              Additionally, there is an option called <code>Maven test</code>. Although the build option already includes testing,
-              this is a good action to take when you soley want to test without rebuilding your entire project.
+              Lastly, there is an option called <code>Maven test</code> that will execute your unit tests. Store
+              all of your unit tests in the <code>src/test/java</code> folder because that is where Maven will
+              search for them.
+            </p>
+            <p>
+              NOTE: Make sure all of your test files end with Test.java. For example, HelloWorldTest.java.
             </p>
             <h4> Debugging with Log4j Plugin </h4>
 
@@ -145,7 +151,7 @@
             </p>
               <p> Imagine that you've been working on a coding assignment for a couple of weeks, and
                 the day before its due, you discover a bug! Let's assume you were lazy and didn't write any
-                j-unit tests. What's the first thing you do?
+                jUnit tests. What's the first thing you do?
               </p>
               <p> One possible course of action is to discover where your program first stopped working by adding a ton of
                 print statements.
@@ -153,13 +159,13 @@
               <p>
                 However, writing regular print statements is annoying because you eventually have to comment them all out or
                 delete them before you turn in your assignment. What if I told you that you could write print statements that
-                could appear or disappear on command.
+                could appear or disappear on command?
               </p>
               <p>
                 Cue the Log4j Plugin, Apache's logging package for Java!
               </p>
               <p>
-                This plugin allows to use us to write logging statements with varying levels of priority. We can also turn off
+                This plugin allows you to write logging statements with varying levels of priority. You can also turn off
                 these logging statements when they are not needed. Below are the steps to begin using this Plugin:
               </p>
               <p>
@@ -174,7 +180,8 @@
    &lt;/dependency&gt;</pre>
             <p>
               Next, you will need to create a new log4j properties file. Right click on the src folder of your Maven project,
-               and navigate to <code>New</code> then <code>File</code>. Name your new file <code>log4j.properties</code> exactly as spelled here.
+               and navigate to <code>New</code> then <code>File</code>. Name your new file <code>log4j.properties</code> exactly as spelled here and
+               click Finish.
             </p>
             <img src="./images/log4jproperties.png" alt="Create the properties file"  width="400" height="350"/>
             <p>
@@ -194,7 +201,7 @@
           outputted. NOTE: The logger will display all elements at the specified logging level and of higher priority.
             </p>
             <p>
-              The lines after that will initialize the console as an appender to the logger. It is possible to
+              The lines after that initialize the console as an appender to the logger. It is possible to
               use a file as an appender by replacing console with your file name and ConsoleAppender with FileAppender.
             </p>
       <p>
@@ -206,7 +213,7 @@
 
   public class Log4jDemo {
       //Initialize logger
-      static Logger log = Logger.getLogger(HelloWorld.class);
+      static Logger log = Logger.getLogger(Log4jDemo.class);
 
       public static void main(String[] args) {
           /*Declare different levels of logging messages in order of highest
@@ -230,12 +237,12 @@
       </p>
       <p>
         If you would like to see all of the messages, use <code>ALL</code> in the properties file.
-        Similarily, if you would like to see none of the messages, use <code>OFF</code> in the properties
+        Similarly, if you would like to see none of the messages, use <code>OFF</code> in the properties
         file.
       </p>
       <p>
         That covers the basic gist of log4j. Learn more at <a href="http://logging.apache.org/log4j/2.x/">
-       http://logging.apache.org/log4j/2.x/ </a>
+       http://logging.apache.org/log4j/2.x/. </a>
       </p>
           </article>
         </section>
