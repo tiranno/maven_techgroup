@@ -34,7 +34,41 @@
       <section id="main_content">
         <section class="">
           <h2>Overview and Intro</h2>
+          <article class="">
+            <h3>What is Maven?</h3>
+            <p>The word <i>maven</i> comes from Hebrew, where it means accumulator of knowledge. As a technology Maven is a program to aid in software development. More specifically, Maven is what is called a build automation tool. Maven was created by and is currently maintained by the Apache Software Foundation.</p>
+            <h3>What is a build automation tool?</h3>
+            <p>Often when software developers are making a project, they have a lot of source code and binary files, as well as included libraries to manage. All these files need to be compiled in a particular order and manner to yield the desired executable or executables. It is an arduous task to manually complete all the build steps for a project every time a change is made. This is the problem build automation tools try to solve. When working on a project the developer just needs to write the build rules down, and then just execute one command. The build automation tool will go through and execute the pre-defined build steps, saving the developer immense time.</p>
+            <h4>Example build automation tool - Make</h4>
+            <p>A build automation tool developers might be familiar with is the Unix <i>make</i> utility. Make is a relatively simplistic build tool. Imagine a project with all the necessary files in one directory or folder. The developer creates a <i>makefile</i> in the same directory. This file contains &quot;targets&quot;, &quot;dependancies&quot;, &quot;directives&quot;, and some other information. The developer can edit this file, and enter make [TARGET] at the command line. The make utility then finds the TARGET in the makefile and executes all the directives associated with that target.</p>
+            <h4>Example build automation tool - Ant</h4>
+            <p>Ant, which stands for <i>Another Neat Tool</i>, is another build automation tool developed by Apache in early 2000. The main goal of Ant was to mirror the make utility but for Java projects. The two technologies are similar in function but have slightly different details. For make the build process is defined in a special file type called a &quot;makefile&quot;, whereas with Ant, the build directives are contained in an XML file format.</p>
+            <p>Because Ant uses more generic file formats and was primarily created for Java, it is much more portable than make. In other words, a makefile is specific to an operating system, where Ant can operate accross operating systems using the same files. This portability feature was a primary goal of the project.</p>
 
+            <h3>Maven vs Ant</h3>
+            <p>Apache Maven extends Apache Ant by implementing the paradigm &quot;convention over configuration&quot;. What this means is that Maven assumes that most users want to do the same thing. They probably want to build their projects with the dependencies included, and also generate some tests and information about the project. Therefore, users only need to write down exceptions to the standard build process.</p>
+            <p>The default Maven build process is as follows:</p>
+            <ol>
+              <li>validate</li>
+              <li>generate-sources</li>
+              <li>validate</li>
+              <li>process-sources</li>
+              <li>generate-resources</li>
+              <li>process-resources</li>
+              <li>compile</li>
+              <li>process-test-sources</li>
+              <li>process-test-resources</li>
+              <li>test-compile</li>
+              <li>test</li>
+              <li>package</li>
+              <li>install</li>
+              <li>deploy</li>
+            </ol>
+            <p>Since Maven makes some assumptions on what the user wants, the user is given a lot of power. For example, often times developers will use standard libraries created by other developers in their projects. Maven knows that the user will need the code for the libraries to include in the project, so when the user builds a project Maven automatically goes out to the internet to grab the desired binary files.</p>
+            <p>There are some consequences of Maven favoring convention over configuration. A developer doesn't need to include as many specific instructions in the build file compared with Ant or make. This does, however, have it's drawbacks. A user needs to understand how Maven behaves before they can understand what Maven will do with a project. A Maven project file contains information that is very specific to Maven. Whereas, with Ant and Make, a developer could probably understand what the script does just by looking at the file.</p>
+            <h3>What's in this tutorial</h3>
+            <p>This tutorial will introduce the reader to building projects with Maven. Many developers use Maven as an extension for an IDE, such as Eclipse. Thus a section of this tutorial is dedicated to using Maven in Eclipse. However, it is not required to use Maven in an IDE, so there is a section on using Maven in the terminal. Finally, the tutorial finishes with a section providing more detail on the POM file, which is the name of the file that contains the high level information for a Maven build.</p>
+          </article>
           <hr/>
         </section>
 
