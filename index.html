@@ -375,9 +375,13 @@
               </p>
               <p>
                 Next to the main "Hello World" function I created a simple function
-                called "arrayToMultimap" that takes in an array of arrays that each start
+                called "arraysToMultimap" that takes in an array of arrays that each start
                 with a string and are followed by a number of values (also strings).
-                It returns a Guava Mulitmap which maps multiple values to the same
+                It returns a
+                <a href="http://docs.guava-libraries.googlecode.com/git/javadoc/com/google/common/collect/Multimap.html">
+                  Guava Multimap
+                </a>
+                which maps multiple values to the same
                 key).
                 <br>
                 <br>
@@ -395,7 +399,7 @@
 
   public class App {
 
-    public static Multimap<String,String> arrayToMultimap (String[][] arr){
+    public static Multimap<String,String> arraysToMultimap (String[][] arr){
       Multimap<String,String> multimap = ArrayListMultimap.create();
 
       for(i = 0; i < arr.length; i++ ){
@@ -431,7 +435,31 @@
 
             <h4>Add a Test</h4>
               <p>
-                [[[ADD A QUICK TEST TO RUN]]]
+                Now we'll add a quick test to our code.
+                In the Maven generated test file add the <code>testArrayToMultimap</code>
+                code below to under the <code>testApp()</code> unit test.
+                <br>
+                Make sure to import Guava with <code>import com.google.common.collect.Multimap;</code>
+                at the top of the test file.
+
+                <pre>
+  public void testArrayToMultimap()
+  {
+    String[] lower = { "lower", "a", "b", "c" };
+    String[] upper = { "upper", "W", "X", "Y", "Z" };
+    String[][] arrays = { lower, upper };
+
+    Multimap<String,String> multimap = ArrayListMultimap.create();
+    multimap.put("lower", "a");
+    multimap.put("lower", "b");
+    multimap.put("lower", "c");
+    multimap.put("upper", "W");
+    multimap.put("upper", "X");
+    multimap.put("upper", "Y");
+    multimap.put("upper", "Z");
+
+    assertEquals( multimap , arrayToMultimap(arrays) );
+  }</pre>
               </p>
               <p>
                 <br>
@@ -454,10 +482,7 @@
                 descibed in the POM file (in our case Guava).
                 Then it will compile the application classes
                 and place them in <code>maven-tut/target/classes</code>
-              </p>
-              <p>
-                [[[MORE]]]
-                <br><br>
+                <br>
               </p>
 
             <h4>Testing</h4>
@@ -486,7 +511,7 @@
 
               The JAR is placed in the <code>/target</code> directory.
               Remember the resources we placed in the project source earlier?
-              Maven adds all of the resources in <code>$maven-tut/src/main/resources</code>
+              Maven adds all of the resources in <code>maven-tut/src/main/resources</code>
               to the generated JAR. It's that easy!
               <br>
             </p>
