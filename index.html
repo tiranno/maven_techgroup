@@ -575,9 +575,78 @@ public class Log4jDemo {
         <hr />
         <section id="id-pom">
           <h2>In Depth: the POM file</h2>
-          <p>
+          <article>
+            <h3> What is the POM file? </h3>
+            <p>
+              POM stands for "Project Object Model". It is an XML representation of a Maven project held in a file named pom.xml. 
+              <br>
+              The POM contains information about the project and various configuration detail used by Maven to build the project(s). 
+              <br>
+              In fact, in the Maven world, a project need not contain any code at all, merely a pom.xml.
+            </p>
+          </article>
 
-          </p>
+          <article>
+            <h3> The Basics </h3>
+            <img src="./images/basicPom.png" alt="The terminal's directory structure" />
+            <p>
+              <h4> Identification </h4>
+              <ol>
+                <li> groupId </li>
+                <li> artifactId </li>
+                <li> version </li>
+                <li> packaging (optional) </li>
+                <img src="./images/packaging.png" alt="The terminal's directory structure" />
+                <li> classifier (optional) </li>
+              </ol>
+            </p>
+            <h3> POM Relationship </h3>
+            <p>
+              <h4> POM Relationship - Dependencies </h4>
+              <img src="./images/dependenciesList.png" alt="The terminal's directory structure" />
+              <p> 
+                The cornerstone of the POM is its dependency list. Maven downloads and links the dependencies for you on compilation and other goals that require them. As an added bonus, Maven brings in the dependencies of those dependencies (transitive dependencies), allowing your list to focus solely on the dependencies your project requires.<br>
+                <img src="./images/dependenciesWebsite.png" alt="The terminal's directory structure" />
+                <br>
+                What if my dependencies are not maven artifact? <br>
+              </p>
+            </p>
+            <p>
+              <h4> POM Relationship - Inheritance </h4>
+              <img src="./images/inheritance.png" alt="The terminal's directory structure" />
+              <p> 
+                One powerful addition that Maven brings to build management is the concept of project inheritance. Although in build systems such as Ant, inheritance can certainly be simulated, Maven has gone the extra step in making project inheritance explicit to the project object model.<br>
+                <br>
+                The elements in the parent POM that are inherited by its children are:<br>
+                <ul>
+                  <li>dependencies</li>
+                  <li>developers and contributors</li>
+                  <li>plugin lists</li>
+                  <li>reports lists</li>
+                  <li>plugin executions with matching ids</li>
+                  <li>plugin configuration</li>
+                </ul>
+                <br>
+                You can take a look at how the Super POM affects your Project Object Model by creating a minimal pom.xml and executing on the command line:<br>
+                <pre> mvn help:effective-pom </pre>
+                <br>
+                Just as Java objects ultimately inherit from java.lang.Object, all Project Object Models inherit from a base Super POM.<br>
+              </p>
+            </p>
+            <p>
+              <h4> POM Relationship - Aggregation (Multi-Module) </h4>
+              <img src="./images/aggregation.png" alt="The terminal's directory structure" />
+              <p> 
+                A project with modules is known as a multimodule, or aggregator project. Modules are projects that this POM lists, and are executed as a group. An pom packaged project may aggregate the build of a set of projects by listing them as modules, which are relative directories to those projects.<br>
+                <br>
+                <img src="./images/multimoduleAndInheritance.png" alt="The terminal's directory structure" />
+              </p>
+            </p>
+            <h3> Build Settings </h3>
+
+          </article>
+
+          
         </section>
 
       </section>
