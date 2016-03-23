@@ -575,6 +575,7 @@ public class Log4jDemo {
         <hr />
         <section id="id-pom">
           <h2>In Depth: the POM file</h2>
+          <p><i>Source From https://maven.apache.org/pom.html</i></p>
           <article>
             <h3> What is the POM file? </h3>
             <p>
@@ -597,7 +598,10 @@ public class Log4jDemo {
                 <li> version </li>
                 <li> packaging (optional) </li>
                 <img src="./images/packaging.png" alt="The terminal's directory structure" />
+                <p> When no packaging is declared, Maven assumes the artifact is the default: jar. The valid types are Plexus role-hints (read more on Plexus for a explanation of roles and role-hints) of the component role org.apache.maven.lifecycle.mapping.LifecycleMapping. The current core packaging values are: pom, jar, maven-plugin, ejb, war, ear, rar, par. These define the default list of goals which execute to each corresponding build lifecycle stage for a particular package structure.</p>
                 <li> classifier (optional) </li>
+                <p>The classifier allows to distinguish artifacts that were built from the same POM but differ in their content. It is some optional and arbitrary string that - if present - is appended to the artifact name just after the version number.
+                <br>As a motivation for this element, consider for example a project that offers an artifact targeting JRE 1.5 but at the same time also an artifact that still supports JRE 1.4. The first artifact could be equipped with the classifier jdk15 and the second one with jdk14 such that clients can choose which one to use.</p>
               </ol>
             </p>
             <h3> POM Relationship </h3>
@@ -609,6 +613,19 @@ public class Log4jDemo {
                 <img src="./images/dependenciesWebsite.png" alt="The terminal's directory structure" />
                 <br>
                 What if my dependencies are not maven artifact? <br>
+                There are three methods for dealing with this scenario.
+                <ol>
+                  <li>
+                    Install the dependency locally using the install plugin. The method is the simplest recommended method. For example:
+                    <pre>mvn install:install-file -Dfile=non-maven-proj.jar -DgroupId=some.group -DartifactId=non-maven-proj -Dversion=1 -Dpackaging=jar</pre>
+                  </li>
+                  <li>
+                    Create your own repository and deploy it there. This is a favorite method for companies with an intranet and need to be able to keep everyone in synch. There is a Maven goal called deploy:deploy-file which is similar to the install:install-file goal (read the plugin's goal page for more information).
+                  </li>
+                  <li>
+                    Set the dependency scope to system and define a systemPath. (Not Recommended)
+                  </li>
+                </ol>
               </p>
             </p>
             <p>
